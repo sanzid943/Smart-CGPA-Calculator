@@ -1,9 +1,7 @@
 (function () {
   "use strict";
 
-  /* =========================================================
-     Constants
-  ========================================================= */
+  /* Constants */
   const STORAGE_KEY = "cgpa_ledger_state_v1";
 
   const GRADE_SCALE = [
@@ -20,9 +18,9 @@
   ];
   const GRADE_POINTS = Object.fromEntries(GRADE_SCALE.map(g => [g.grade, g.point]));
 
-  /* =========================================================
-     State
-  ========================================================= */
+
+  /* State */
+  
   function blankCourse() {
     return { id: cryptoId(), name: "", credit: "", grade: "" };
   }
@@ -67,9 +65,9 @@
     }
   }
 
-  /* =========================================================
-     Calculations
-  ========================================================= */
+
+  /* Calculations */
+  
   function courseQualityPoints(course) {
     const credit = parseFloat(course.credit);
     const point = GRADE_POINTS[course.grade];
@@ -116,9 +114,9 @@
     return { credits, quality, gpa };
   }
 
-  /* =========================================================
-     Rendering: Course table
-  ========================================================= */
+
+  /* Rendering: Course table */
+  
   const courseBody = document.getElementById("courseBody");
   const gradeOptionsHtml = ['<option value="">—</option>']
     .concat(GRADE_SCALE.map(g => `<option value="${g.grade}">${g.grade}</option>`))
@@ -201,9 +199,9 @@
     renderAll(true);
   });
 
-  /* =========================================================
-     Semester name + editing badge
-  ========================================================= */
+
+  /* Semester name + editing badge */
+  
   const semesterNameInput = document.getElementById("semesterName");
   semesterNameInput.addEventListener("input", e => {
     state.draft.name = e.target.value;
@@ -221,9 +219,9 @@
     }
   }
 
-  /* =========================================================
-     Save / edit / delete semester
-  ========================================================= */
+
+  /* Save / edit / delete semester */
+  
   document.getElementById("saveSemesterBtn").addEventListener("click", () => {
     const validCourses = state.draft.courses.filter(courseIsValid);
     if (validCourses.length === 0) {
@@ -325,9 +323,9 @@
       .replace(/>/g, "&gt;");
   }
 
-  /* =========================================================
-     Summary + seal
-  ========================================================= */
+
+  /* Summary + seal */
+  
   let lastOverall = 0;
 
   function renderSummary() {
@@ -359,9 +357,9 @@
     if (rerenderSemesterList) renderSemesterList();
   }
 
-  /* =========================================================
-     Student info
-  ========================================================= */
+
+  /* Student info */
+  
   const stuName = document.getElementById("stuName");
   const stuId = document.getElementById("stuId");
   const stuDept = document.getElementById("stuDept");
@@ -374,9 +372,9 @@
   stuId.addEventListener("input", e => { state.student.id = e.target.value; saveState(); });
   stuDept.addEventListener("input", e => { state.student.dept = e.target.value; saveState(); });
 
-  /* =========================================================
-     Target CGPA / Required GPA calculator
-  ========================================================= */
+
+  /* Target CGPA / Required GPA calculator */
+  
   document.getElementById("calcTargetBtn").addEventListener("click", () => {
     const target = parseFloat(document.getElementById("targetCgpa").value);
     const totalCredits = parseFloat(document.getElementById("targetTotalCredits").value);
@@ -420,9 +418,9 @@
     }
   });
 
-  /* =========================================================
-     Grade scale (collapsible)
-  ========================================================= */
+
+  /* Grade scale (collapsible) */
+  
   const gradeScaleTbody = document.getElementById("gradeScaleBody_tbody");
   gradeScaleTbody.innerHTML = GRADE_SCALE.map(
     g => `<tr><td>${g.range}</td><td>${g.grade}</td><td>${g.point.toFixed(2)}</td></tr>`
@@ -438,9 +436,9 @@
     gradeScaleToggle.setAttribute("aria-expanded", String(isHidden));
   });
 
-  /* =========================================================
-     Clear all data
-  ========================================================= */
+  
+  /* Clear all data */
+  
   document.getElementById("clearAllBtn").addEventListener("click", () => {
     if (!confirm("This permanently deletes every saved semester and student info from this browser. Continue?")) return;
     state = defaultState();
@@ -451,9 +449,9 @@
     renderAll(true);
   });
 
-  /* =========================================================
-     Theme
-  ========================================================= */
+
+  /* Theme */
+  
   function applyTheme() {
     document.documentElement.setAttribute("data-theme", state.theme);
     document.getElementById("themeToggle").querySelector(".theme-icon").textContent =
@@ -465,9 +463,9 @@
     applyTheme();
   });
 
-  /* =========================================================
-     Init
-  ========================================================= */
+
+  /*  Init */
+  
   semesterNameInput.value = state.draft.name;
   applyTheme();
   renderCourses();
