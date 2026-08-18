@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ledger — CGPA Calculator</title>
+<title>GradeMate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
@@ -12,7 +12,8 @@
 
 <div class="page">
 
-  <!-- ===== Masthead ===== -->
+  <!-- Masthead -->
+  
   <header class="masthead">
     <div class="masthead__title">
       <p class="eyebrow">Academic Ledger</p>
@@ -36,7 +37,9 @@
 
   <main class="layout">
 
-    <!-- ===== Left column ===== -->
+
+    <!-- Left column -->
+    
     <div class="col col--main">
 
       <!-- Student info -->
@@ -58,7 +61,9 @@
         </div>
       </section>
 
+
       <!-- Current semester ledger -->
+      
       <section class="panel">
         <h2 class="panel__title"><span class="panel__num">II.</span> Semester Ledger</h2>
 
@@ -109,7 +114,9 @@
         </div>
       </section>
 
+      
       <!-- Saved semesters -->
+      
       <section class="panel">
         <h2 class="panel__title"><span class="panel__num">III.</span> Semester History</h2>
         <p class="panel__hint">Every saved semester feeds the Overall CGPA seal above.</p>
@@ -120,7 +127,9 @@
 
     </div>
 
-    <!-- ===== Right column ===== -->
+
+    <!-- Right column -->
+    
     <div class="col col--side">
 
       <!-- Result summary -->
@@ -146,7 +155,9 @@
         </dl>
       </section>
 
+      
       <!-- Target CGPA / Required GPA -->
+      
       <section class="panel">
         <h2 class="panel__title"><span class="panel__num">V.</span> Target CGPA &amp; Required GPA</h2>
         <p class="panel__hint">Find the average GPA you need in your remaining credits to hit a target CGPA.</p>
@@ -164,7 +175,9 @@
         <div id="targetResult" class="target-result"></div>
       </section>
 
+      
       <!-- Grade scale -->
+      
       <section class="panel">
         <button class="panel__title panel__title--toggle" id="gradeScaleToggle" aria-expanded="false">
           <span><span class="panel__num">VI.</span> Grade Scale</span>
@@ -180,7 +193,9 @@
         </div>
       </section>
 
+
       <!-- Danger zone -->
+      
       <section class="panel panel--danger">
         <h2 class="panel__title"><span class="panel__num">VII.</span> Reset</h2>
         <p class="panel__hint">Clears every saved semester, student info and the current ledger from this browser.</p>
