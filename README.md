@@ -1,8 +1,5 @@
 # CGPA Calculator
 
-A vanilla HTML/CSS/JS CGPA calculator.
-
-
 ## Features
 
 - **Student information** — name, ID, department
